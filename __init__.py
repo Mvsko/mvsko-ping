@@ -36,5 +36,5 @@ f = open("./client/connection/history.yml", "a")
 f.write("[" + name + " " + version + "] \n  - Session Connection: " + d1 + " (" + current_time + ")\n  - Session ID Key: " + logkey() + "\n  - Argument: " + ''.join(sys.argv) + "\n")
 f.close()
 
-time.sleep(3)
+time.sleep(0.5)
 os.system("start .\client\launch.bat")

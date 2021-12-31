@@ -21,7 +21,7 @@ const msclc = []
 var i = 0;
 var ifail = 0;
 
-module.exports = function ping(host, port, color){
+module.exports = function ping(host, port, color, timeout){
     let ping = true;
     ConsoleTitle(`C:\\Windows\\system32\\cmd.exe - ping ${host} -p ${port}`)
     clogs(host, port)
@@ -42,29 +42,35 @@ module.exports = function ping(host, port, color){
       if (db.get(`${host}.available.host`) === true){
         setInterval(() => {
           if (ping === true){
-          tcpp.ping({ address: host , port: port, attempts: 1}, function(err, data) {
-            if (err) log(err)
-            let promise = Promise.resolve();
-            data.results.forEach(function(index){
-              promise = promise
-                .then(() => {
-                  return new Promise((resolve) => {
-                    setTimeout(function(){
-                      ms = Math.round(index.time * 100) / 100;
-                      i = i+1;
-                      if (ms > 1000){
-                         resolve(log(clc.redBright("Connection timed out")))
-                         ifail = ifail + 1;
-                      } else {
-                        resolve(log("Connected to " + colorOutput(color, host) + ": time=" + colorOutput(color, ms + "ms") + " protocol=" + colorOutput(color, "TCP") + " port=" + colorOutput(color, port)));
-                        msclc.push(`${ms}`)
-                      }
-                    }, randomNumber(700,1200)); 
-                  })
-        
-                });
+            try {
+              tcpp.ping({ address: host , port: port, attempts: 1}, function(err, data) {
+                if (err) log(err)
+                let promise = Promise.resolve();
+                data.results.forEach(function(index){
+                  promise = promise
+                    .then(() => {
+                      return new Promise((resolve) => {
+                        setTimeout(function(){
+                          ms = Math.round(index.time * 100) / 100;
+                          i = i+1;
+                          if (ms > timeout || ms === NaN){
+                             resolve(log(clc.redBright("Connection timed out")))
+                             setTimeout(() => {
+                              ifail = ifail + 1;
+                             }, 250);
+                          } else {
+                            resolve(log("Connected to " + colorOutput(color, host) + ": time=" + colorOutput(color, ms + "ms") + " protocol=" + colorOutput(color, "TCP") + " port=" + colorOutput(color, port)));
+                            msclc.push(`${ms}`)
+                          }
+                        }, randomNumber(700,1000)); 
+                      })
+            
+                    });
+                })
             })
-        })
+            } catch (e) {
+              log(clc.redBright("Connection timed out"))
+            }
         }
       }, 1000);
       }
@@ -83,7 +89,7 @@ module.exports = function ping(host, port, color){
         log(`        Minimum = ` + clc.cyanBright(min) + `ms, Maximum = ` + clc.cyanBright(max) + `ms, Average = ` + clc.cyanBright(average) + `ms`)
         log()
         log()
-        chist(host, port, i, connected, fail, max, min, average)
+        chist(host, port, i, connected, fail, prcfail, max, min, average)
         ping = false;
         if (process === false) {
           process.exit()
