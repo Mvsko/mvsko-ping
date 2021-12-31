@@ -1,0 +1,108 @@
+[MKPing 1.0.2]
+  - Command: ping google.com -p 8080
+    • IP: google.com
+    • Port: 8080
+    • Attempts: 13
+    • Connected: 13
+    • Failed: 0 
+    • Max: 32.94ms
+    • Min: 23.87ms
+    • Average: 26.03ms
+  - Date: 31/12/2021 (18:02:57)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping google.com -p 27
+    • IP: google.com
+    • Port: 27
+    • Attempts: 64
+    • Connected: 64
+    • Failed: 0 
+    • Max: NaNms
+    • Min: NaNms
+    • Average: NaNms
+  - Date: 31/12/2021 (18:04:41)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping google.com -p 27
+    • IP: google.com
+    • Port: 27
+    • Attempts: 14
+    • Connected: 14
+    • Failed: 0 
+    • Max: NaNms
+    • Min: NaNms
+    • Average: NaNms
+  - Date: 31/12/2021 (18:05:11)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping google.com -p 27
+    • IP: google.com
+    • Port: 27
+    • Attempts: 0
+    • Connected: 0
+    • Failed: 0 
+    • Max: -Infinityms
+    • Min: Infinityms
+    • Average: NaNms
+  - Date: 31/12/2021 (18:06:12)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping mistik-wiki.fr -p 80
+    • IP: mistik-wiki.fr
+    • Port: 80
+    • Attempts: 49
+    • Connected: 49
+    • Failed: 0 
+    • Max: 76.89ms
+    • Min: 23.34ms
+    • Average: 25.68ms
+  - Date: 31/12/2021 (18:23:21)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping mistik-wiki.fr -p 443
+    • IP: mistik-wiki.fr
+    • Port: 443
+    • Attempts: 49
+    • Connected: 49
+    • Failed: 0 
+    • Max: 31ms
+    • Min: 23.62ms
+    • Average: 24.82ms
+  - Date: 31/12/2021 (18:24:34)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping 45.157.233.179 -p 30120
+    • IP: 45.157.233.179
+    • Port: 30120
+    • Attempts: 196
+    • Connected: 196
+    • Failed: 0 
+    • Max: 337.49ms
+    • Min: 33.33ms
+    • Average: 37.78ms
+  - Date: 31/12/2021 (18:34:27)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping 193.203.238.206 -p 30120
+    • IP: 193.203.238.206
+    • Port: 30120
+    • Attempts: 86
+    • Connected: 86
+    • Failed: 0 
+    • Max: 54.97ms
+    • Min: 37.61ms
+    • Average: 39.18ms
+  - Date: 31/12/2021 (18:36:16)
+  - Rank: user
+[MKPing 1.0.2]
+  - Command: ping 176.9.15.249 -p 30287
+    • IP: 176.9.15.249
+    • Port: 30287
+    • Attempts: 40
+    • Connected: 40
+    • Failed: 0 
+    • Max: 3073.33ms
+    • Min: 46.32ms
+    • Average: 277.69ms
+  - Date: 31/12/2021 (18:38:33)
+  - Rank: user

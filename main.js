@@ -1,11 +1,6 @@
 //#▉#########################▶ Modules ◀########################▉#
 
 const ConsoleTitle = require("node-bash-title");
-// var clc = require("cli-color");
-// var moment = require("moment");
-// const fs = require ("fs");
-// const prompt = ps({ sigint: true });
-// const log = require("./data/log")
 const help = require("./commands/help")
 const ping = require("./commands/ping")
 const readline = require("readline");
