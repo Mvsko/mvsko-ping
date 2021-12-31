@@ -2,7 +2,7 @@
     "parameters": [
         {
             "name": "Ping",
-            "version": "1.5.5",
+            "version": "1.0.2",
             "command": "ping"
         }
     ]

@@ -34,7 +34,7 @@ module.exports = function ping(host, port, color){
     setTimeout(() => {
       if (db.get(`${host}.available`)){
         setInterval(() => {
-          
+          if (ping === true){
           tcpp.ping({ address: host , port: port, attempts: 1}, function(err, data) {
             let promise = Promise.resolve();
             data.results.forEach(function(index){
@@ -52,25 +52,9 @@ module.exports = function ping(host, port, color){
                 });
             })
         })
+        }
       }, 1000);
       }
-
-    // var pcinterval1 = setInterval(() => {
-    //     var pctimeout1 = setTimeout(() => {
-    //         ping = false;
-    //     }, randomNumber(8400, 18000));
-    //     if (ping === true){
-    //         ms1 = getRandomNumberBetween(30,80)
-    //         ms2 = getRandomNumberBetween(1,100)
-    //         log("Connected to " + colorOutput(color, host) + ": time=" + colorOutput(color, ms1 + "." + ms2 + "ms") + " protocol=" + colorOutput(color, "TCP") + " port=" + colorOutput(color, port))
-    //         msclc.push(`${ms1}.${ms2}`)
-    //         i = i + 1;
-    //     } else {
-    //         log(clc.redBright("Connection timed out"))
-    //         ifail = ifail + 1;
-    //         i = i + 1
-    //     }
-    // }, randomNumber(1000,1500));
     process.stdin.setRawMode(true);
     process.stdin.on("keypress", function(chunk, key) {
       if(key && key.name === "c" && key.ctrl) {
@@ -80,6 +64,7 @@ module.exports = function ping(host, port, color){
         log(`        Minimum = ` + clc.cyanBright(Math.min(...msclc)) + `ms, Maximum = ` + clc.cyanBright(Math.max(...msclc)) + `ms, Average = ` + clc.cyanBright(Math.round(numAverage(msclc) * 100) / 100) + `ms`)
         log()
         log()
+        ping = false;
         if (process === false) {
           process.exit()
         }
