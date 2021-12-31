@@ -7,6 +7,7 @@ const { SETTINGS } = require("../client/config")
 const chist = require("../data/logs/cmdhistory")
 const clogs = require("../data/logs/cmdlogs")
 
+const colorOutput = require("../data/functions/colorOutput")
 const randomNumber = require("../data/functions/randomNumber")
 const numAverage = require("../data/functions/numAverage")
 const getRandomNumberBetween = require("../data/functions/getRandomNumberBetween")
@@ -15,7 +16,10 @@ const msclc = []
 var i = 0;
 var ifail = 0;
 
-module.exports = function ping(host, port){
+module.exports = function ping(host, port, color){
+  let v = "1"
+  log(colorOutput(color, v))
+  // if (color === "undefined") 
     let ping = true;
     clogs(host, port)
     chist(host, port)

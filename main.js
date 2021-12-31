@@ -35,20 +35,20 @@ function pingfc() {
                 if (resp === SETTINGS.APP.COMMAND) return help(), pingfc();
                 if (resp.startsWith(SETTINGS.APP.COMMAND + (" -c") || resp.startsWith(SETTINGS.APP.COMMAND + (" --color")))){
                     if (args[2]){
+                        if (args[2] === "cyan") c.color = "cyan";
                         if (args[2] === "red") c.color = "red";
                         if (args[2] === "green") c.color = "green";
                         if (args[2] === "blue") c.color = "blue";
                         if (args[2] === "yellow") c.color = "yellow";
                     } else {
-                        console.log("Please, insert an existant color (red,green,blue,yellow).")
+                        console.log("Please, insert an existant color (red,green,cyan,blue,yellow,magenta).")
                         console.log("The color already established is green.")
                     }
                 }
                 if (resp.startsWith(SETTINGS.APP.COMMAND + (" -n") || resp.startsWith(SETTINGS.APP.COMMAND + (" --nocolor")))) c.color = "undefined";
                 if (args[3]){
                     if (args[2].includes("-p") && isNaN(args[3]) === false && args[1].includes(".")){
-                        console.log(c.color)
-                        ping(args[1], args[3])
+                        ping(args[1], args[3], c.color)
                     } else {
                         help(), pingfc();
                     }
