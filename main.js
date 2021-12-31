@@ -44,6 +44,7 @@ function pingfc() {
                         console.log("The color already established is green.")
                     }
                 }
+                if (resp.startsWith(SETTINGS.APP.COMMAND + (" -n") || resp.startsWith(SETTINGS.APP.COMMAND + (" --nocolor")))) c.color = "undefined";
                 if (args[3]){
                     if (args[2].includes("-p") && isNaN(args[3]) === false && args[1].includes(".")){
                         console.log(c.color)
