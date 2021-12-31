@@ -1,6 +1,6 @@
 const SETTINGS = {
     APP: {
-        NAME: "Ping",
+        NAME: "MKPing",
         COMMAND: "ping",
         VERSION: "1.5.5",
         AUTHOR: "Mvsko",

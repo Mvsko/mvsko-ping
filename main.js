@@ -1,6 +1,5 @@
 //#▉#########################▶ Modules ◀########################▉#
 
-const ps = require("prompt-sync");
 const ConsoleTitle = require("node-bash-title");
 // var clc = require("cli-color");
 // var moment = require("moment");
@@ -15,7 +14,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 const os = require("os")
-
+const { SETTINGS } = require("./client/config")
 //#▉##########################▶ Code ◀#########################▉#
 
 ConsoleTitle('C:\\Windows\\system32\\cmd.exe')
@@ -23,14 +22,14 @@ ConsoleTitle('C:\\Windows\\system32\\cmd.exe')
 function pingfc() {
     rl.question(os.homedir() + ">", function(resp) {
         const args = resp.split(" ")
-        if (resp.includes("help") || resp.includes("ping") || resp === "clear" || resp === "cls"){
+        if (resp.includes("help") || resp.startsWith(SETTINGS.APP.COMMAND) || resp === "clear" || resp === "cls"){
             if (resp === "help") return help(), pingfc();
             if (resp === "clear" || resp === "cls"){
                 console.clear()
                 pingfc();
             }
-            if (resp.startsWith("ping")){
-                if (resp === "ping") return help(), pingfc();
+            if (resp.startsWith(SETTINGS.APP.COMMAND)){
+                if (resp === SETTINGS.APP.COMMAND) return help(), pingfc();
                 if (args[3]){
                     if (args[2].includes("-p") && isNaN(args[3]) === false && args[1].includes(".")){
                         ping(args[1], args[3])
