@@ -1,0 +1,9 @@
+{
+    "parameters": [
+        {
+            "name": "Ping",
+            "version": "1.5.5",
+            "command": "ping"
+        }
+    ]
+}
