@@ -19,7 +19,7 @@ module.exports = function ping(host, port){
     let ping = true;
     clogs(host, port)
     chist(host, port)
-    log(`ping v${SETTINGS.APP.VERSION} - Copyright (c) 2022 Mvsko`)
+    log(`mkping v${SETTINGS.APP.VERSION} - Copyright (c) 2022 Mvsko`)
     log()
     log("Connecting to " + clc.yellowBright(host) + " on " + clc.yellowBright("TCP", port) + ":")
     log()

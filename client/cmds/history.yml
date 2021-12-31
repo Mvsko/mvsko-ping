@@ -2,3 +2,27 @@
   - Command: ping 1.1.1.1 -p 1
   - Date: 31/12/2021 (15:17:04)
   - Rank: user
+[MKPing 1.5.5]
+  - Command: ping google.fr -p 80
+  - Date: 31/12/2021 (15:20:05)
+  - Rank: user
+[MKPing 1.5.5]
+  - Command: ping a.A -p 1
+  - Date: 31/12/2021 (15:23:21)
+  - Rank: user
+[MKPing 1.5.5]
+  - Command: ping 1.1.1 -p 80
+  - Date: 31/12/2021 (15:29:16)
+  - Rank: user
+[MKPing 1.5.5]
+  - Command: ping 1.1 -p 10
+  - Date: 31/12/2021 (15:30:17)
+  - Rank: user
+[MKPing 1.5.5]
+  - Command: ping 1.1 -p 1
+  - Date: 31/12/2021 (15:31:43)
+  - Rank: user
+[MKPing 1.5.5]
+  - Command: ping 1.1 -p 1
+  - Date: 31/12/2021 (15:31:53)
+  - Rank: user
