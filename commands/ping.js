@@ -53,15 +53,17 @@ module.exports = function ping(host, port, color, timeout){
                         setTimeout(function(){
                           ms = Math.round(index.time * 100) / 100;
                           i = i+1;
-                          if (ms > timeout || ms === NaN){
-                             resolve(log(clc.redBright("Connection timed out")))
-                             setTimeout(() => {
-                              ifail = ifail + 1;
-                             }, 250);
-                          } else {
-                            resolve(log("Connected to " + colorOutput(color, host) + ": time=" + colorOutput(color, ms + "ms") + " protocol=" + colorOutput(color, "TCP") + " port=" + colorOutput(color, port)));
-                            msclc.push(`${ms}`)
-                          }
+                          if (ping === true){
+                            if (ms > timeout || ms === NaN){
+                              resolve(log(clc.redBright("Connection timed out")))
+                              setTimeout(() => {
+                                ifail = ifail + 1;
+                              }, 250);
+                            } else {
+                              resolve(log("Connected to " + colorOutput(color, host) + ": time=" + colorOutput(color, ms + "ms") + " protocol=" + colorOutput(color, "TCP") + " port=" + colorOutput(color, port)));
+                              msclc.push(`${ms}`)
+                            }
+                        }
                         }, randomNumber(700,1000)); 
                       })
             
@@ -70,6 +72,9 @@ module.exports = function ping(host, port, color, timeout){
             })
             } catch (e) {
               log(clc.redBright("Connection timed out"))
+              setTimeout(() => {
+
+              }, 1000);
             }
         }
       }, 1000);
