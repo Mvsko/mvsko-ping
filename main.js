@@ -8,9 +8,15 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+const db = require("quick.db")
 const clc = require("cli-color")
 const os = require("os")
 const { SETTINGS } = require("./client/config")
+const colorOutput = require("./data/functions/colorOutput")
+const colorPing = require("./data/functions/colorPing")
+const colorPrint = require("./data/functions/colorPrint")
+
+db.set(`pingcoloroutput`, {color: "green"})
 
 let c = {"color": "green"}
 let timeout = {"time": "1000"}
@@ -32,16 +38,18 @@ function pingfc() {
                 if (resp === SETTINGS.APP.COMMAND) return help(), pingfc();
                 if (resp.startsWith(SETTINGS.APP.COMMAND + (" -c")) || resp.startsWith(SETTINGS.APP.COMMAND + (" --color"))){
                     if (args[2]){
-                        if (args[2] === "cyan") c.color = "cyan", console.log("The color " + clc.cyanBright(args[2]) + " is now use"), console.log();
-                        if (args[2] === "red") c.color = "red", console.log("The color " + clc.redBright(args[2]) + " is now use"), console.log();
-                        if (args[2] === "green") c.color = "green", console.log("The color " + clc.greenBright(args[2]) + " is now use"), console.log();
-                        if (args[2] === "blue") c.color = "blue", console.log("The color " + clc.blueBright(args[2]) + " is now use, console.log()");
-                        if (args[2] === "yellow") c.color = "yellow", console.log("The color " + clc.yellowBright(args[2]) + " is now use"), console.log();
-                        if (args[2] === "magenta") c.color = "magenta", console.log("The color " + clc.yellowBright(args[2]) + " is now use"), console.log();
+                        let colors = ["red", "green", "cyan", "blue", "yellow", "magenta"]
+                        if (isNaN(args[2])){
+                            if (colors.includes(args[2])){
+                                colorPing(args[2])
+                            } else {
+                                colorPrint(db.get(`pingcoloroutput.color`))
+                            }
+                        } else {
+                            colorPrint(db.get(`pingcoloroutput.color`))
+                        }
                     } else {
-                        console.log("Please, insert an existant color (" + clc.redBright("red") + "," + clc.greenBright("green") + "," + clc.cyanBright("cyan") + "," + clc.blueBright("blue") + "," + clc.yellowBright("yellow") + "," + clc.magentaBright("magenta") + ").")
-                        console.log("The color established is " + clc.redBright(c.color) + ".")
-                        console.log()
+                        colorPrint(db.get(`pingcoloroutput.color`))
                     }
                 }
                 if (resp.startsWith(SETTINGS.APP.COMMAND + (" -t")) || resp.startsWith(SETTINGS.APP.COMMAND + (" --timeout"))){

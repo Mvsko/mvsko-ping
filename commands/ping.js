@@ -21,8 +21,11 @@ const msclc = []
 var i = 0;
 var ifail = 0;
 
-module.exports = function ping(host, port, color, timeout){
+module.exports = function ping(command, host, port, color, timeout){
+  log(command)
     let ping = true;
+    let hostx64 = Buffer.from(host).toString('base64')
+    log(hostx64)
     ConsoleTitle(`C:\\Windows\\system32\\cmd.exe - ping ${host} -p ${port}`)
     clogs(host, port)
     log(`mkping v${SETTINGS.APP.VERSION} - Copyright (c) 2022 Mvsko`)
@@ -33,13 +36,13 @@ module.exports = function ping(host, port, color, timeout){
     tcpp.probe(host, port, function(err, available) {
       if (!available){
         log(clc.redBright("We can't resolve host, please verify again"))
-        db.set(`${host}.available`, {host: false})
+        db.set(`${hostx64}`, {available: false})
       } else {
-        db.set(`${host}.available`, {host: true})
+        db.set(`${hostx64}`, {available: true})
       }
     })
     setTimeout(() => {
-      if (db.get(`${host}.available.host`) === true){
+      if (db.get(`${hostx64}.available`) === true){
         setInterval(() => {
           if (ping === true){
             try {
