@@ -1,11 +1,8 @@
 var clc = require("cli-color");
 const log = require("../data/log")
-const fs = require("fs")
-const moment = require("moment")
 const { SETTINGS } = require("../client/config")
 var tcpp = require('tcp-ping');
 const db = require("quick.db");
-const { exec } = require('child_process');
 const ConsoleTitle = require("node-bash-title");
 
 const chist = require("../data/logs/cmdhistory")
@@ -14,18 +11,15 @@ const clogs = require("../data/logs/cmdlogs")
 const colorOutput = require("../data/functions/colorOutput")
 const randomNumber = require("../data/functions/randomNumber")
 const numAverage = require("../data/functions/numAverage")
-const getRandomNumberBetween = require("../data/functions/getRandomNumberBetween");
-const { exit } = require("process");
+const { exit } = require("process")
 
 const msclc = []
 var i = 0;
 var ifail = 0;
 
 module.exports = function ping(command, host, port, color, timeout){
-  log(command)
     let ping = true;
     let hostx64 = Buffer.from(host).toString('base64')
-    log(hostx64)
     ConsoleTitle(`C:\\Windows\\system32\\cmd.exe - ping ${host} -p ${port}`)
     clogs(host, port)
     log(`mkping v${SETTINGS.APP.VERSION} - Copyright (c) 2022 Mvsko`)

@@ -1,5 +1,8 @@
 //#▉#########################▶ Modules ◀########################▉#
 
+console.clear()
+
+const fs = require('fs');
 const ConsoleTitle = require("node-bash-title");
 const help = require("./commands/help")
 const ping = require("./commands/ping")
@@ -12,7 +15,6 @@ const db = require("quick.db")
 const clc = require("cli-color")
 const os = require("os")
 const { SETTINGS } = require("./client/config")
-const colorOutput = require("./data/functions/colorOutput")
 const colorPing = require("./data/functions/colorPing")
 const colorPrint = require("./data/functions/colorPrint")
 
@@ -71,7 +73,14 @@ function pingfc() {
                 if (resp.startsWith(SETTINGS.APP.COMMAND + (" -n")) || resp.startsWith(SETTINGS.APP.COMMAND + (" --nocolor"))) c.color = "undefined", console.log("The output is now without " + clc.yellowBright("color") + "."), console.log();
                 if (args[3]){
                     if (args[2].includes("-p") && isNaN(args[3]) === false && args[1].includes(".")){
-                        ping(args[1], args[3], c.color, timeout.time)
+                        ping(args, args[1], args[3], c.color, timeout.time)
+                        fs.watch('./client/cmds/history.yml', function (event, filename) {
+                            if (event == 'change') {
+                                setTimeout(() => {
+                                    pingfc();
+                                }, 2000);
+                            }
+                          });
                     } else {
                         help(), pingfc();
                     }
